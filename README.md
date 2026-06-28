@@ -8,11 +8,12 @@
 
 ### 🔹 Overview Dashboard
 
+![Dashboard Page 1](Page 1.png)<img width="605" height="338" alt="Page 1" src="https://github.com/user-attachments/assets/c718e498-0fd4-4b71-8eb4-3d18f4e91b22" />
 
 
 ### 🔹 Team Comparison Dashboard
 
-
+<img width="604" height="338" alt="paage 2" src="https://github.com/user-attachments/assets/96a8169a-347a-4d06-8a39-dd22686e1d88" />
 
 ---
 
