@@ -8,7 +8,7 @@
 
 ### 🔹 Overview Dashboard
 
-![Dashboard Page 1](Page 1.png)<img width="605" height="338" alt="Page 1" src="https://github.com/user-attachments/assets/c718e498-0fd4-4b71-8eb4-3d18f4e91b22" />
+<img width="605" height="338" alt="Page 1" src="https://github.com/user-attachments/assets/c718e498-0fd4-4b71-8eb4-3d18f4e91b22" />
 
 
 ### 🔹 Team Comparison Dashboard
