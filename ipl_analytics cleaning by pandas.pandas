@@ -1,0 +1,82 @@
+import pandas as pd
+
+import numpy as np
+
+from six.moves import urllib
+
+import os
+
+import warnings
+
+warnings.filterwarnings("ignore")
+df_deliveries=pd.read_csv("D:\ipl_data_warehouse\deliveries_updated_ipl_upto_2025.csv")
+df_deliveries
+df_deliveries.info()
+df_deliveries['date'] = pd.to_datetime(df_deliveries["date"])
+df_deliveries.columns.tolist()
+df_deliveries.isnull().sum().sort_values(ascending=False)
+df_deliveries['Penalty']=df_deliveries['Penalty'].fillna(0)
+df_deliveries['Byes']=df_deliveries['Byes'].fillna(0)
+df_deliveries['isNoBall']=df_deliveries['isNoBall'].fillna(0)
+df_deliveries['LegByes']=df_deliveries['LegByes'].fillna(0)
+df_deliveries['isWide']=df_deliveries['isWide'].fillna(0)
+df_deliveries['wicket'] = (
+    df_deliveries['player_dismissed']
+    .notna()
+    .astype(int)
+)
+df_deliveries['total_runs'] = (
+    df_deliveries['batsman_runs']
+    + df_deliveries['extras']
+)
+df_deliveries.duplicated().sum()
+duplicates = df_deliveries[df_deliveries.duplicated()]
+print(duplicates)
+df_deliveries = df_deliveries.drop_duplicates()
+df_deliveries.shape
+
+df_matches=pd.read_csv("D:\ipl_data_warehouse\matches_updated_ipl_upto_2025.csv")
+df_matches
+print(df_matches.columns.tolist())
+df_matches.info()
+df_matches.isnull().sum().sort_values(ascending=False)
+df_matches[df_matches['winner'].isnull()]
+df_matches[df_matches['city'].isnull()][['venue']]
+df_matches['date1'].value_counts(dropna=False)
+df_matches.isnull().sum().sort_values(ascending=False)
+df_matches.drop(
+    columns=[
+        'date1',
+        'date2',
+        'eliminator'
+    ],
+    inplace=True
+)
+df_matches[df_matches['winner'].isnull()][
+    ['team1','team2','outcome']
+]
+df_matches.duplicated().sum()
+df_matches.info()
+df_matches['date'] = pd.to_datetime(df_matches["date"])
+df_matches.to_csv("matches_cleaned.csv", index=False)
+
+df_deliveries.to_csv("deliveries_cleaned.csv", index=False)
+from sqlalchemy import create_engine
+
+engine = create_engine("mysql+pymysql://{user}:{pw}@localhost:3306/{db}".format(user='root', pw='PJ95%40pankaj', db='ipl_analytics_db'))
+
+
+df_matches.to_sql(
+    "matches",
+    con=engine,
+    if_exists="replace",
+    index=False
+)
+
+
+df_deliveries.to_sql(
+    "deliveries",
+    con=engine,
+    if_exists="replace",
+    index=False
+)
