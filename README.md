@@ -168,12 +168,6 @@ IPL-Analytics-Dashboard
 
 ---
 
-## 📷 Dashboard Screenshots
-
-(Add your dashboard screenshots here)
-
----
-
 ## 🎯 Skills Demonstrated
 
 - Data Cleaning
@@ -184,6 +178,9 @@ IPL-Analytics-Dashboard
 - Power Query
 - Dashboard Design
 - Data Visualization
+
+--
+## download the dataset from kaggle.com https://www.kaggle.com/datasets/chaitu20/ipl-dataset2008-2025
 
 ---
 
